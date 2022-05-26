@@ -1,5 +1,7 @@
 package com.example.addressbookapp.dto;
+import lombok.Data;
 
+@Data
 public class ResponseDTO {
     private String message;
     private Object data;

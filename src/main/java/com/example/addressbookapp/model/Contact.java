@@ -1,7 +1,9 @@
 package com.example.addressbookapp.model;
 
 import com.example.addressbookapp.dto.ContactDTO;
+import lombok.Data;
 
+@Data
 public class Contact {
     private int contactId;
     private String firstName;
