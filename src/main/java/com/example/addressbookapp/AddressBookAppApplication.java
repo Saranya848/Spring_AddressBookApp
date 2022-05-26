@@ -10,5 +10,4 @@ public class AddressBookAppApplication {
         System.out.println("Welcome to Address Book App");
         SpringApplication.run(AddressBookAppApplication.class, args);
     }
-
 }
