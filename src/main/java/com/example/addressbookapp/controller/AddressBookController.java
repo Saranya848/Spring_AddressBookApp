@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.List;
 
-
 @RestController
 @RequestMapping("/addressbook")
 public class AddressBookController {
@@ -30,7 +29,7 @@ public class AddressBookController {
 
 
     @GetMapping("/get/{contactId}")
-    public ResponseEntity<ResponseDTO> getContactData(@PathVariable("contactId") int contactId) {
+    public ResponseEntity<ResponseDTO> getContactDataById(@PathVariable("contactId") int contactId) {
         Contact contact =null;
         contact=addressbookservice.getContactById(contactId);
         ResponseDTO response = new ResponseDTO("Get call success for id", contact);

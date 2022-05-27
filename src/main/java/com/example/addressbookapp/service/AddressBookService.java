@@ -43,6 +43,7 @@ public class AddressBookService implements IAddressBookService {
         contact.setCity(contactDTO.getCity());
         contact.setZip(contactDTO.getZip());
         contact.setPhone(contactDTO.getPhone());
+        contact.setEmail(contactDTO.getEmail());
         contactList.set(contactId - 1, contact);
         return contact;
     }

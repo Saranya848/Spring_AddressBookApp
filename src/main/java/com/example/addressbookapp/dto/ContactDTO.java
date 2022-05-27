@@ -28,8 +28,11 @@ public @Data class ContactDTO {
     @NotEmpty(message = "Phoneno cannot be null")
     public String phone;
 
+    @Pattern(regexp = "^[a-zA-Z-9]+([._+-][0-9A-Za-z]+)@[a-zA-Z0-9]+.[a-zA-Z]{2,4}([.][a-z]{2,4})?$",message = "email not valid")
+    @NotEmpty(message = "Employee Name can't be null")
+    public String email;
     public ContactDTO(String firstName, String lastName, String address, String state, String city, String zip,
-                      String phone) {
+                      String phone, String email) {
         super();
         this.firstName = firstName;
         this.lastName = lastName;
@@ -38,6 +41,7 @@ public @Data class ContactDTO {
         this.city = city;
         this.zip = zip;
         this.phone = phone;
+        this.email = email;
     }
 
 
