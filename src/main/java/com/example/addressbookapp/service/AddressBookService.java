@@ -29,6 +29,30 @@ public class AddressBookService implements IAddressBookService {
     }
 
     @Override
+    public List<Contact> getContactByCity(String city) {
+        return addressBookRepository.findContactListByCity(city);
+    }
+
+    @Override
+    public List<Contact> sortByCity() {
+        return addressBookRepository.sortByCity();
+    }
+    @Override
+    public List<Contact> getContactByState(String state) {
+        return addressBookRepository.findContactListByState(state);
+    }
+
+    @Override
+    public List<Contact> sortByState() {
+        return addressBookRepository.sortByState();
+    }
+
+//    @Override
+//    public List<Contact> getContactByState(String state) {
+//        return null;
+//    }
+
+    @Override
     public Contact createContact(ContactDTO contactDTO) {
 
         Contact contact=null;

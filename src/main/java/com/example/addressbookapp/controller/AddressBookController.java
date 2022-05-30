@@ -1,8 +1,8 @@
 package com.example.addressbookapp.controller;
 
+import com.example.addressbookapp.model.Contact;
 import com.example.addressbookapp.dto.ContactDTO;
 import com.example.addressbookapp.dto.ResponseDTO;
-import com.example.addressbookapp.model.Contact;
 import com.example.addressbookapp.service.IAddressBookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,6 +17,7 @@ import java.util.List;
 @RequestMapping("/addressbook")
 public class AddressBookController {
     @Autowired
+    //addressbookservice----variable
     private IAddressBookService addressbookservice;
 
     @GetMapping(value = { "", "/", "/get" })
@@ -37,6 +38,39 @@ public class AddressBookController {
         return new ResponseEntity<ResponseDTO>(response, HttpStatus.OK);
 
     }
+    @GetMapping("/getbycity/{city}")
+    public ResponseEntity<ResponseDTO> getContactByCity(@PathVariable("city") String city)
+    {
+        List<Contact> contactList = addressbookservice.getContactByCity(city);
+        ResponseDTO response = new ResponseDTO("Get call success for city", contactList);
+        return new ResponseEntity<ResponseDTO>(response, HttpStatus.OK);
+    }
+
+    @GetMapping("/sortbycity")
+    public ResponseEntity<ResponseDTO> getSortByCity()
+    {
+        List<Contact> contactList = addressbookservice.sortByCity();
+        ResponseDTO response = new ResponseDTO("Get call success for city", contactList);
+        return new ResponseEntity<ResponseDTO>(response, HttpStatus.OK);
+
+    }
+
+    @GetMapping("/getbycity/{state}")
+    public ResponseEntity<ResponseDTO> getContactByState(@PathVariable("state") String state)
+    {
+        List<Contact> contactList = addressbookservice.getContactByState(state);
+        ResponseDTO response = new ResponseDTO("Get call success for state", contactList);
+        return new ResponseEntity<ResponseDTO>(response, HttpStatus.OK);
+    }
+    @GetMapping("/sortbystate")
+    public ResponseEntity<ResponseDTO> getSortByState()
+    {
+        List<Contact> contactList = addressbookservice.sortByState();
+        ResponseDTO response = new ResponseDTO("Get call success for state", contactList);
+        return new ResponseEntity<ResponseDTO>(response, HttpStatus.OK);
+
+    }
+
 
     @PostMapping("/create")
     public ResponseEntity<ResponseDTO> addContactData(@Valid @RequestBody ContactDTO contactDTO) {
